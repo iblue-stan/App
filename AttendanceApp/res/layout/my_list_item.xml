@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="上班:"
+                android:textColor="#990099"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="下班:"
+                android:textColor="#5555FF"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:layout_gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_first"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#990099"
+                android:textSize="20sp"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/tv_last"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#5555FF"
+                android:textSize="20sp"
+                android:layout_gravity="left" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#F00"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>
