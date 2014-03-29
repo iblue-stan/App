@@ -27,7 +27,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -35,7 +34,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -45,16 +43,15 @@ public class Leave extends Fragment implements OnClickListener,
 		OnItemSelectedListener {
 
 	private Spinner conditionSpinner;
-	private ArrayAdapter<String> listAdapter;
 	private int[] drawableIds = { R.drawable.img1, R.drawable.img2,
-			R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6 };	
+			R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6 };
 	private String selected;
 	private Button startDateBtn, startTimeBtn, endDateBtn, endTimeBtn, sendBtn;
 	private EditText memoEditArea;
 	private int setYear, setMonth, setDate, setHour, setMinute;
 	private Calendar startCalendar, endCalendar;
 	private ProgressDialog pDialog;
-	private final String URI_CLOCK_IN = "http://flash60905.qov.tw/QRcode/member_leave_res.php";
+	private final String URI_CLOCK_IN = "http://pirate2.byethost22.com/0321QR/mobile/member_leave_res.php";
 	public static final int REFRESH_DATA = 0x00000001;
 	private boolean isDateStart, isDateEnd, isTimeStart, isTimeEnd;
 
@@ -66,6 +63,9 @@ public class Leave extends Fragment implements OnClickListener,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		if (MyFragment.user_phone.isEmpty())
+			Toast.makeText(getActivity(), "尚未輸入手機號碼", Toast.LENGTH_SHORT)
+					.show();
 		return inflater.inflate(R.layout.frg_leave, container, false);
 	}
 
@@ -73,7 +73,7 @@ public class Leave extends Fragment implements OnClickListener,
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setUpUIComponent();
-		
+
 	}
 
 	private void setUpUIComponent() {
@@ -85,14 +85,17 @@ public class Leave extends Fragment implements OnClickListener,
 			public int getCount() {
 				return 6;
 			}
+
 			// @Override
 			public Object getItem(int arg0) {
 				return null;
 			}
+
 			// @Override
 			public long getItemId(int arg0) {
 				return 0;
 			}
+
 			// @Override
 			public View getView(int arg0, View arg1, ViewGroup arg2) {
 				/*
@@ -107,7 +110,7 @@ public class Leave extends Fragment implements OnClickListener,
 				ii.setImageDrawable(getResources().getDrawable(
 						drawableIds[arg0]));// 设置图片
 				ll.addView(ii);// 添加到LinearLayout中
-				
+
 				return ll;
 			}
 		};
@@ -281,9 +284,8 @@ public class Leave extends Fragment implements OnClickListener,
 					selected, memoEditArea.getText().toString() };
 			if (MyFragment.user_phone.isEmpty()) {
 				Toast.makeText(getActivity(), "尚未輸入手機號碼", Toast.LENGTH_SHORT)
-				.show();
-			} 
-			else if (isDateStart && isDateEnd && isTimeStart && isTimeEnd) {
+						.show();
+			} else if (isDateStart && isDateEnd && isTimeStart && isTimeEnd) {
 				new SendPostToInternet().execute(msg);
 			} else {
 				Toast.makeText(getActivity(), "請選擇日期時間", Toast.LENGTH_SHORT)
