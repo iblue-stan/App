@@ -77,7 +77,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
 
 	// ****************************************************************************
 	private ProgressDialog pDialog;
-	private final String URI_CLOCK_IN = "http://flash60905.qov.tw/test.php";
+	private final String URI_CLOCK_IN = "http://pirate2.byethost22.com/0321QR/mobile/test.php";
 	public static final int REFRESH_DATA = 0x00000001;
 
 	// 掃描條碼的結果顯示
